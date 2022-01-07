@@ -42,7 +42,11 @@ jobs:
       env:
         cache-name: cache-tauri-target
       with:
-        path: ./src-tauri/target
+        path: |
+          ./src-tauri/target
+          ~/.cargo/registry/index
+          ~/.cargo/registry/cache
+          ~/.cargo/git
         key: ${{ runner.os }}-build-${{ env.cache-name }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
