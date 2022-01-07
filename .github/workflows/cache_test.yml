@@ -37,7 +37,7 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - name: install app dependencies
-      run: yarn --prefer-offline
+      run: yarn --prefer-offline --verbose
 
 
 
