@@ -1,6 +1,9 @@
 name: Cache test
 
-on: push
+on:
+  push:
+    branches:
+      - nonono
 
 
 
