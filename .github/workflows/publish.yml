@@ -33,24 +33,29 @@ jobs:
     - name: yarn install
       run: yarn
 
-    - name: cache tauri target
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-tauri-target
-      with:
-        path: |
-          ./src-tauri/target
-          ~/.cargo/registry/index
-          ~/.cargo/registry/cache
-          ~/.cargo/git
-        key: ${{ runner.os }}-build-${{ env.cache-name }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
 
-    - name: build app
-      run: yarn tauri build
+    - uses: Swatinem/rust-cache@v1
+      with:
+        working-directory: ./src-tauri
+
+    # - name: cache tauri target
+    #   uses: actions/cache@v2
+    #   env:
+    #     cache-name: cache-tauri-target
+    #   with:
+    #     path: |
+    #       ./src-tauri/target
+    #       ~/.cargo/registry/index
+    #       ~/.cargo/registry/cache
+    #       ~/.cargo/git
+    #     key: ${{ runner.os }}-build-${{ env.cache-name }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-build-${{ env.cache-name }}-
+    #       ${{ runner.os }}-build-
+    #       ${{ runner.os }}-
+
+    # - name: build app
+    #   run: yarn tauri build
 
     - uses: tauri-apps/tauri-action@v0
       env:
