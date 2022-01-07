@@ -39,7 +39,7 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - name: install app dependencies
-      run: yarn
+      run: yarn --prefer-offline
 
 
 
